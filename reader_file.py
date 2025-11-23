@@ -1,4 +1,6 @@
 import sys
+import argparse
+
 
 def analyze_text(file_path):
     with open(file_path, "r", encoding="utf-8") as file:
@@ -13,6 +15,10 @@ def analyze_text(file_path):
         "content": cleaned_lines
     }
 
-result = analyze_text("example.txt")
-print("Python version:" + sys.version)
-print(result)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Simple script for reading files")
+    parser.add_argument("--file", "-f", required=True, help="Name of file")
+    arguments = parser.parse_args()
+    result = analyze_text(arguments.file)
+    print("Python version:" + sys.version)
+    print(result)

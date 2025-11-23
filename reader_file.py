@@ -1,3 +1,5 @@
+import sys
+
 def analyze_text(file_path):
     with open(file_path, "r", encoding="utf-8") as file:
         lines = file.readlines()
@@ -12,4 +14,5 @@ def analyze_text(file_path):
     }
 
 result = analyze_text("example.txt")
+print("Python version:" + sys.version)
 print(result)

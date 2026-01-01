@@ -18,6 +18,15 @@ def analyze_txt(file_path):
         "content": cleaned_lines
     }
 
+def analyze_json(file_path):
+    with open(file_path, "r", encoding="utf-8") as file:
+        data = json.load(file)
+    return {
+        "type": "json",
+        "keys": list(data.keys()),
+        "content": data
+    }
+
 def read_data(file_path):
     ext = os.path.splitext(file_path)[1]
     if ext == ".txt":

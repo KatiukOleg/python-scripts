@@ -1,5 +1,6 @@
 import sys
 import argparse
+from rich.console import Console
 
 
 def analyze_text(file_path):
@@ -16,9 +17,10 @@ def analyze_text(file_path):
     }
 
 if __name__ == "__main__":
+    console = Console()
     parser = argparse.ArgumentParser(description="Simple script for reading files")
     parser.add_argument("--file", "-f", required=True, help="Name of file")
     arguments = parser.parse_args()
     result = analyze_text(arguments.file)
-    print("Python version:" + sys.version)
-    print(result)
+    console.print("Python version:" + sys.version)
+    console.print(result)

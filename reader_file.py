@@ -13,6 +13,7 @@ def analyze_txt(file_path):
     word_count = sum(len(line.split()) for line in cleaned_lines)
 
     return {
+        "type": "json",
         "lines": len(cleaned_lines),
         "words": word_count,
         "content": cleaned_lines
@@ -28,7 +29,7 @@ def analyze_json(file_path):
     }
 
 def read_data(file_path):
-    ext = os.path.splitext(file_path)[1]
+    ext = os.path.splitext(file_path)[1].lower()
     if ext == ".txt":
         return analyze_txt(file_path)
     if ext == ".json":

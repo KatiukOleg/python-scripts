@@ -1,0 +1,16 @@
+{
+    "projects": [
+        {
+            "name": "Log Monitoring Migration",
+            "type": "DevOps",
+            "status": "in_progress",
+            "tools": ["Datadog", "Splunk", "OpenTelemetry"]
+        },
+        {
+            "name": "Agrarian Trade Research",
+            "type": "Academic",
+            "status": "completed",
+            "tools": ["R", "Excel", "Python"]
+        }
+  ]
+}

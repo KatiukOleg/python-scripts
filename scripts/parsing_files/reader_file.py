@@ -41,6 +41,21 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Simple script for reading files")
     parser.add_argument("--file", "-f", required=True, help="Name of file")
     arguments = parser.parse_args()
-    result = read_data(arguments.file)
-    console.print("Python version:" + sys.version)
-    console.print(result)
+    try:
+        result = read_data(arguments.file)
+        console.print("Python version:" + sys.version)
+        console.print(result)
+    except FileNotFoundError:
+        console.print(f"[red]Error:[/red] File not found: {arguments.file}")
+        raise SystemExit(2)
+    except PermissionError:
+        console.print(f"[red]Error:[/red] Permission denied: {arguments.file}")
+        raise SystemExit(3)
+    except json.JSONDecodeError as e:
+        console.print(f"[red]Error:[/red] Invalid JSON in file: {arguments.file}")
+        console.print(f"[yellow]Details:[/yellow] {e}")
+        raise SystemExit(4)
+    except OSError as e:
+        console.print(f"[red]Error:[/red] OS error while reading: {arguments.file}")
+        console.print(f"[yellow]Details:[/yellow] {e}")
+        raise SystemExit(5)
